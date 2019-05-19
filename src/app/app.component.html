@@ -1,0 +1,25 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<div class="container">
+<table class="table table-bordered table-hover table-striped" *ngIf="dataloaded">
+  <tr>
+    <th>Sr. No</th>
+    <th>Subcategory</th>
+    <th>Title</th>
+    <th>Price</th>
+    <th>Popularity</th>
+  </tr>
+  <tr *ngFor="let key of keys| paginate: config ">
+    <td> {{key}}</td>
+    <td *ngFor="let productkey of productkeys">
+      {{ productsArray[key][productkey]}}
+    </td>
+  </tr>
+</table>
+<pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+</div>
+<router-outlet></router-outlet>
